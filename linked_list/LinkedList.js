@@ -28,10 +28,42 @@ export class LinkedList {
         // Return the entire LinkedList
         return this;
     }
+
+    pop() {
+        // If we have 0 items return undefined
+        if (!this.head) return undefined;
+
+        let temp = this.head, pre = this.head;
+
+        // Case for more than 1 item
+        while (temp.next) {
+            pre = temp;
+            temp = temp.next;
+        }
+
+        this.tail = pre;
+        this.tail.next = null;
+        this.length--;
+
+        // Case for 1 item
+        if (this.length === 0) {
+            this.head = null;
+            this.tail = null;
+        }
+
+        // Return the deleted node
+        return temp;
+    }
 }
 
 const linkedList = new LinkedList(5);
 linkedList.push(2);
-linkedList.push(7);
+// linkedList.push(9);
+// linkedList.push(7);
+
+// linkedList.pop()
+// console.log('Pop: ', linkedList.pop());
+linkedList.pop()
+
 
 console.log(linkedList);
