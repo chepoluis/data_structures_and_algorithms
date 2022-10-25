@@ -71,6 +71,38 @@ export class LinkedList {
 
         return this;
     }
+
+    shift() {
+        // My solution
+        // if (!this.head) return undefined;
+
+        // const removedValue = this.head;
+
+        // if (this.length === 1) {
+        //     this.head = null;
+        //     this.tail = null;
+        // } else {
+        //     this.head = this.head.next;
+        //     removedValue.next = null;
+        // }
+
+        // this.length--;
+
+        // return removedValue;
+
+        if (!this.head) return undefined;
+
+        let temp = this.head;
+
+        this.head = this.head.next;
+        temp.next = null;
+
+        this.length--;
+
+        if (this.length === 0) this.tail = null;
+
+        return temp;
+    }
 }
 
 window.linkedList = new LinkedList(1);
