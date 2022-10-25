@@ -10,7 +10,7 @@ export class LinkedList {
     }
 
     push(value) {
-        // 1. Create a new node
+        // Create a new node
         const newNode = new Node(value);
 
         // If there is no node, point head and tail to the new node
@@ -54,16 +54,26 @@ export class LinkedList {
         // Return the deleted node
         return temp;
     }
+
+    // Add a new element to the beginning
+    unshit(value) {
+        const newNode = new Node(value);
+
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+
+        this.length++;
+
+        return this;
+    }
 }
 
-const linkedList = new LinkedList(5);
-linkedList.push(2);
-// linkedList.push(9);
-// linkedList.push(7);
-
-// linkedList.pop()
-// console.log('Pop: ', linkedList.pop());
-linkedList.pop()
-
+window.linkedList = new LinkedList(1);
+// window.linkedList.unshit(7);
 
 console.log(linkedList);
