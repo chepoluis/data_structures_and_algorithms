@@ -103,6 +103,19 @@ export class LinkedList {
 
         return temp;
     }
+
+    get(index) {
+        if (!this.head) return undefined;
+        if (index >= this.length || index < 0) return undefined;
+
+        let node = this.head;
+
+        for (let i = 0; i < index; i++) {
+            node = node.next;
+        } 
+
+        return node;
+    }
 }
 
 window.linkedList = new LinkedList(1);
