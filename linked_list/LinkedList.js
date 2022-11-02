@@ -116,9 +116,35 @@ export class LinkedList {
 
         return node;
     }
+    
+    set(index, value) {
+        let temp = this.get(index);
+
+        if (temp) {
+            temp.value = value;
+            return true;
+        }
+
+        return false;
+    }
 }
 
+
+// const newNode = new Node(value);
+
+// // TO DO: create solution for the scenario index = 0
+
+// const previousNode = this.get(index - 1);
+
+// const temp = previousNode.next;
+
+// previousNode.next = newNode;
+
+// newNode.next = temp;
+
+// this.length++;
 window.linkedList = new LinkedList(1);
-// window.linkedList.unshit(7);
+window.linkedList.push(2);
+window.linkedList.push(3);
 
 console.log(linkedList);
