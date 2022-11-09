@@ -193,6 +193,33 @@ export class LinkedList {
 
         // this.length--;
     }
+
+    reverse() {
+        let temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+
+        let prev = null;
+        let next = null;
+
+        for (let i = 0; i < this.length; i++) {
+            next = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = next;
+        }
+
+        return this;
+        
+        // const temp = this.tail;
+
+        // this.tail = this.head;
+        // this.head = temp;
+
+        // this.tail.next = null;
+
+        // return this;
+    }
 }
 
 window.linkedList = new LinkedList(1);
