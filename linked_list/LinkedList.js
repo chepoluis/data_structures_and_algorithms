@@ -29,6 +29,7 @@ export class LinkedList {
         return this;
     }
 
+    /** Removes the last element */
     pop() {
         // If we have 0 items return undefined
         if (!this.head) return undefined;
@@ -55,7 +56,7 @@ export class LinkedList {
         return temp;
     }
 
-    // Add a new element to the beginning
+    /** Add a new element to the beginning */
     unshit(value) {
         const newNode = new Node(value);
 
@@ -72,6 +73,7 @@ export class LinkedList {
         return this;
     }
 
+    /** Removes the first element */
     shift() {
         // My solution
         // if (!this.head) return undefined;
@@ -164,6 +166,32 @@ export class LinkedList {
         // newNode.next = temp;
         
         // this.length++;
+    }
+
+    remove(index) {
+        if (index < 0 || index >= this.length) return undefined;
+
+        if (index === 0) return this.shift();
+
+        if (index === this.length - 1) return this.pop();
+
+        const before = this.get(index - 1);
+        const temp = before.next; // The node we want to remove
+
+        before.next = temp.next;
+        temp.next = null;
+
+        this.length--;
+
+        return temp;
+
+        /** --------- */
+
+        // const temp = this.get(index - 1);
+
+        // temp.next = temp.next.next;
+
+        // this.length--;
     }
 }
 
