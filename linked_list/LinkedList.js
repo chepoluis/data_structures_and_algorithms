@@ -127,22 +127,46 @@ export class LinkedList {
 
         return false;
     }
+
+    insert(index, value) {
+        if (index < 0 || index > this.length) return false;
+
+        // Put it at the beginning of the list
+        if (index === 0) return this.unshit(value);
+
+        // Put it at the end of the list
+        if (index === this.length) return this.push(value);
+
+        const newNode = new Node(value);
+
+        const previousNode = this.get(index - 1);
+        
+        // Point the newNode to the next node in the position we want to put it
+        newNode.next = previousNode.next;
+
+        previousNode.next = newNode;
+
+        this.length++;
+
+        return true;
+        /* -------------- */
+
+        // const newNode = new Node(value);
+        
+        // // TO DO: create solution for the scenario index = 0
+        
+        // const previousNode = this.get(index - 1);
+        
+        // const temp = previousNode.next;
+        
+        // previousNode.next = newNode;
+        
+        // newNode.next = temp;
+        
+        // this.length++;
+    }
 }
 
-
-// const newNode = new Node(value);
-
-// // TO DO: create solution for the scenario index = 0
-
-// const previousNode = this.get(index - 1);
-
-// const temp = previousNode.next;
-
-// previousNode.next = newNode;
-
-// newNode.next = temp;
-
-// this.length++;
 window.linkedList = new LinkedList(1);
 window.linkedList.push(2);
 window.linkedList.push(3);
