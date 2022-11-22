@@ -78,6 +78,26 @@ class DoublyLinkedList {
         this.length--;
         return temp;
     }
+
+    get(index) {
+        if (index < 0 || index >= this.length) throw new Error('Insert a correct index');
+
+        let result = this.head;
+        const halfOfTheList = this.length / 2;
+
+        if (index < halfOfTheList) {
+            for (let i = 0; i < index; i++) {
+                result = result.next;
+            }
+        } else {
+            result = this.tail;
+            for (let i = this.length - 1; i > index; i--) {
+                result = result.prev;
+            }
+        }
+
+        return result;
+    }
 }
 
-window.doublyLL = new DoublyLinkedList(1);
+window.doublyLL = new DoublyLinkedList(0);
