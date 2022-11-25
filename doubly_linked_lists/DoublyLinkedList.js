@@ -80,12 +80,11 @@ class DoublyLinkedList {
     }
 
     get(index) {
-        if (index < 0 || index >= this.length) throw new Error('Insert a correct index');
+        if (index < 0 || index >= this.length) return undefined;
 
         let result = this.head;
-        const halfOfTheList = this.length / 2;
 
-        if (index < halfOfTheList) {
+        if (index < this.length / 2) {
             for (let i = 0; i < index; i++) {
                 result = result.next;
             }
@@ -98,6 +97,20 @@ class DoublyLinkedList {
 
         return result;
     }
+
+    set(index, value) {
+        let result = this.get(index);
+
+        if (result) {
+            result.value = value;
+
+            return true;
+        }
+        
+        return false;
+    }
 }
 
 window.doublyLL = new DoublyLinkedList(0);
+doublyLL.push(1)
+doublyLL.push(2)
