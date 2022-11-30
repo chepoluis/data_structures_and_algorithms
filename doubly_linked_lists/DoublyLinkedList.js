@@ -109,8 +109,54 @@ class DoublyLinkedList {
         
         return false;
     }
+
+    insert(index, value) {
+        if (index === 0) return this.unshift(value);
+        if (index === this.length) return this.push(value);
+        if (index < 0 || index > this.length) return false;
+
+        const newNode = new Node(value);
+        /**
+         * We point to the nodes where the new node would be in the middle
+         */
+        const before = this.get(index - 1);
+        const after = before.next;
+
+        before.next = newNode;
+        newNode.prev = before;
+        newNode.next = after;
+        after.prev = newNode;
+
+        this.length++;
+
+        return true;
+
+        // let temp = this.get(index);
+
+        // if (!temp) return false;
+
+        // const newNode = new Node(value);
+
+        // if (this.length === 0) {
+        //     this.head = newNode;
+        //     this.tail = newNode;
+        // } else if (index = 0) {
+        //     temp.next.prev = newNode;
+        //     newNode.next = temp.next;
+        // } else {
+        //     temp.prev.next = newNode;
+        //     temp.next.prev = newNode;
+    
+        //     newNode.next = temp.next;
+        //     newNode.prev = temp.prev;
+    
+        //     temp.next = null;
+        //     temp.prev = null;
+        // }
+
+        // return temp;
+    }
 }
 
-window.doublyLL = new DoublyLinkedList(0);
-doublyLL.push(1)
-doublyLL.push(2)
+window.doublyLL = new DoublyLinkedList(1);
+doublyLL.push(3)
