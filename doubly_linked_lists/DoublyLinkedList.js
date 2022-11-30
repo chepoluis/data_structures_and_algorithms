@@ -156,7 +156,27 @@ class DoublyLinkedList {
 
         // return temp;
     }
+
+    remove(index) {
+        if (index < 0 || index >= this.length) return undefined;
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+
+        const temp = this.get(index);
+        const before = temp.prev;
+        const after = temp.next;
+        
+        before.next = after;
+        after.prev = before;
+        temp.next = null;
+        temp.prev = null;
+
+        this.length--;
+
+        return temp;
+    }
 }
 
-window.doublyLL = new DoublyLinkedList(1);
-doublyLL.push(3)
+window.doublyLL = new DoublyLinkedList(0);
+doublyLL.push(1);
+doublyLL.push(2);
