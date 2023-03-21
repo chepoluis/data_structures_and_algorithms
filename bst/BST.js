@@ -57,6 +57,24 @@ class BST {
 
         return false;
     }
+
+    minValueNode(currentNode) {
+        while (currentNode.left !== null) {
+            currentNode = currentNode.left;
+        }
+
+        return currentNode;
+    }
+
+    minValueTree() {
+        let temp = this.root;
+
+        while (temp.left !== null) {
+            temp = temp.left;
+        }
+
+        return temp;
+    }
 }
 
 window.bst = new BST();
