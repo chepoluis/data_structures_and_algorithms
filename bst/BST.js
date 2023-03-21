@@ -39,6 +39,24 @@ class BST {
             }
         }
     }
+
+    contains(value) {
+        if (this.root === null) return undefined;
+
+        let temp = this.root;
+
+        while (temp) {
+            if (value < temp.value) { // Left
+                temp = temp.left;
+            } else if (value > temp.value) { // Right
+                temp = temp.right;
+            } else if (value === temp.value) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 
 window.bst = new BST();
